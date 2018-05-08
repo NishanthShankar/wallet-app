@@ -1,28 +1,30 @@
 import {StyleSheet} from 'react-native'
 
 export default StyleSheet.create({
-  style_1: {
+  container: {
     elevation: 3,
     backgroundColor: 'white'
   },
-  style_2: {
+  flex: {
     flex: 1
   },
   labelText: {
+    color: '#303030',
     fontSize: 18,
     lineHeight: 18
   },
   balanceText: {
+    color: '#303030',
     textAlign: 'right',
     fontSize: 18,
     lineHeight: 18
   },
-  style_6: {
+  btnHolder: {
     flexDirection: 'row',
     marginVertical: 24,
     justifyContent: 'space-around'
   },
-  style_7: {
+  btn: {
     alignItems: 'center',
     justifyContent: 'center',
     width: 116,
@@ -30,28 +32,36 @@ export default StyleSheet.create({
     backgroundColor: 'white',
     elevation: 2
   },
-  style_8: {
+  closeBtn: {
+    position: 'absolute',
     height: 44,
     width: 44,
-    backgroundColor: 'pink',
-    marginBottom: 4
-  },
-  style_9: {
     alignItems: 'center',
-    justifyContent: 'center',
-    width: 116,
-    padding: 8,
-    backgroundColor: 'white',
-    elevation: 2
+    justifyContent: 'center'
   },
-  style_10: {
-    height: 44,
-    width: 44,
-    backgroundColor: 'pink',
+  icon: {
+    height: 32,
+    width: 32,
     marginBottom: 4
   },
-  style_11: {
+  txnsLabel: {
     margin: 8,
     fontSize: 24
+  },
+  closedContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    top: 7
+  },
+  openContainer: {
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  spacer: {
+    height: 8
+  },
+  txtContainer: {
+    flex: 1,
+    padding: 12
   }
 })

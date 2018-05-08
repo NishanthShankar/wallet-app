@@ -9,18 +9,12 @@ import {
 
 import { connect } from 'react-redux'
 
-import CurrencyView from '../CurrencyView/'
+import TransactionsView from '../TransactionsView/'
+import LoadingView from '../../Components/LoadingView'
 import {G} from '../../Utils/'
 
-const DUMMY_DATA = [
-  {key: 'BTC', label: 'Bitcoin', balance: 200, units: 'BTC'},
-  {key: 'BTX', label: 'BitcoinX', balance: 300, units: 'BTX'},
-  {key: 'LTC', label: 'LiteCoin', balance: 700, units: 'LTC'},
-  {key: 'XTC', label: 'XTcoin', balance: 400, units: 'XTC'},
-  {key: 'DTC', label: 'DogeCoin', balance: 200, units: 'DTC'},
-  {key: 'DTCX', label: 'DogeCoin', balance: 200, units: 'DTC'}
-
-]
+// Redux
+import WalletActions from '../../Redux/WalletsRedux'
 
 const ITEM_HEIGHT = 80
 const HEADER_HEIGHT = 72
@@ -29,6 +23,10 @@ const OFFSET_HEIGHT = G.height - HEADER_HEIGHT - ITEM_HEIGHT / 2
 class MainView extends Component {
   state = {
     scrollable: true
+  }
+
+  componentDidMount () {
+    this.props.fetch()
   }
 
   getItemLayout = (data, index) => (
@@ -47,7 +45,7 @@ class MainView extends Component {
   }
 
   renderItem = ({item, index}) =>
-    <CurrencyView
+    <TransactionsView
       onOpen={this.onItemOpen(index)}
       onClose={this.onItemClose}
       {...item} />
@@ -64,11 +62,11 @@ class MainView extends Component {
           ref='list'
           scrollEnabled={this.state.scrollable}
           getItemLayout={this.getItemLayout}
-          data={DUMMY_DATA}
+          data={this.props.data}
           renderItem={this.renderItem}
           ListFooterComponent={() => <View style={{height: OFFSET_HEIGHT}} />}
         />
-
+        <LoadingView loading={this.props.fetching} />
       </View>
     )
   }
@@ -76,8 +74,11 @@ class MainView extends Component {
 
 export default connect(
   state => ({
+    fetching: state.wallets.fetching,
+    data: state.wallets.data
   }),
   dispatch => ({
+    fetch: _ => dispatch(WalletActions.walletsRequest())
   })
 )(MainView)
 

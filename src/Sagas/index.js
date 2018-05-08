@@ -1,34 +1,40 @@
-import { call, put, takeLatest } from 'redux-saga/effects'
+import { put, takeLatest, select } from 'redux-saga/effects'
+import TransferActions from '../Redux/TransactionsRedux'
 // import Api from '...'
 
-// worker Saga: will be fired on USER_FETCH_REQUESTED actions
-function * fetchUser (action) {
-  console.log('ACTION:', action)
-  yield put({type: 'SET_INFO_TEXT_AGAIN', text: 'DONE'})
+// https://api.myjson.com/bins/19x4ci Get list of coins
+// https://api.myjson.com/bins/fm5nm transactions
+// https://api.myjson.com/bins/auote send/receive
+
+const getParty = (state) => state.txn.party
+const getAPI = (url) => fetch(url).then(d => d.json())
+
+function * fetchWallets (action) {
+  const url = 'https://api.myjson.com/bins/19x4ci'
+  const data = yield getAPI(url)
+  yield put({type: 'WALLETS_SUCCESS', data})
 }
 
-function * log (action) {
-  console.log('ACTION:', action)
+function * fetchTransactions (action) {
+  const url = 'https://api.myjson.com/bins/18yts2'
+  const data = yield getAPI(url)
+  yield put({type: 'TRANSACTIONS_SUCCESS', data})
 }
 
-/*
-  Starts fetchUser on each dispatched `USER_FETCH_REQUESTED` action.
-  Allows concurrent fetches of user.
-*/
-// function * mySaga () {
-//   yield takeEvery("USER_FETCH_REQUESTED", fetchUser);
-// }
+function * makeTransfer (action) {
+  const url = 'https://api.myjson.com/bins/auote'
+  const toId = yield select(getParty)
+  if (!toId) {
+    return yield put(TransferActions.transferFailure('Need ID to transfer'))
+  }
+  const data = yield getAPI(url)
+  yield put({type: 'TRANSFER_SUCCESS', data})
+}
 
-/*
-  Alternatively you may use takeLatest.
-
-  Does not allow concurrent fetches of user. If "USER_FETCH_REQUESTED" gets
-  dispatched while a fetch is already pending, that pending fetch is cancelled
-  and only the latest one will be run.
-*/
 function * mySaga () {
-  yield takeLatest('SET_INFO_TEXT', fetchUser)
-  yield takeLatest('SET_INFO_TEXT_AGAIN', log)
+  yield takeLatest('WALLETS_REQUEST', fetchWallets)
+  yield takeLatest('TRANSACTIONS_REQUEST', fetchTransactions)
+  yield takeLatest('TRANSFER_REQUEST', makeTransfer)
 }
 
 export default mySaga
