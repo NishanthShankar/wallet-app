@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
     borderBottomColor: '#ececec',
     flexDirection: 'row',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   marker: {
     height: 12,
