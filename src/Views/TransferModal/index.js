@@ -12,7 +12,7 @@ import transferImage from '../../Images/transfer_image.png'
 import LoadingView from '../../Components/LoadingView'
 
 // Redux
-import TXNActions from '../../Redux/TransactionsRedux'
+import TransferActions from '../../Redux/TransferRedux'
 
 const DETAILS_MAP = {
   send: {
@@ -32,7 +32,7 @@ const DETAILS_MAP = {
  * @param  {!Boolean} loading
  */
 
-const TransactionModal = (props) => {
+const TransferModal = (props) => {
   return (
     <View style={{flex: 1}}>
       <View style={{height: 200, backgroundColor: 'white', alignItems: 'center', justifyContent: 'center', padding: 12, borderTopLeftRadius: 4, borderTopRightRadius: 4}}>
@@ -60,11 +60,11 @@ const TransactionModal = (props) => {
 
 export default connect(
   state => ({
-    transferring: state.txn.transferring,
-    error: state.txn.error
+    transferring: state.transfer.fetching,
+    error: state.transfer.error
   }),
   dispatch => ({
-    update: party => dispatch(TXNActions.updateParty(party)),
-    transfer: type => () => dispatch(TXNActions.transferRequest({type}))
+    update: party => dispatch(TransferActions.updateParty(party)),
+    transfer: type => () => dispatch(TransferActions.transferRequest({type}))
   })
-)(TransactionModal)
+)(TransferModal)

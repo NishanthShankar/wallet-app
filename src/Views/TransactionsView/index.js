@@ -12,7 +12,7 @@ import {
 import { connect } from 'react-redux'
 
 import TransactionItem from './TransactionItem'
-import TransactionModal from '../TransactionModal'
+import TransferModal from '../TransferModal'
 import Modal from '../../Components/Modal'
 import LoadingView from '../../Components/LoadingView'
 import ResultModal from './ResultModal'
@@ -177,7 +177,7 @@ class TransactionsView extends Component {
         onClose={this.closeModal} >
         {this.state.success
           ? <ResultModal />
-          : <TransactionModal type={this.type} />}
+          : <TransferModal type={this.type} />}
       </Modal >
     </View>
   }
@@ -186,7 +186,7 @@ class TransactionsView extends Component {
 export default connect(
   state => ({
     fetching: state.txn.fetching,
-    transferring: state.txn.transferring,
+    transferring: state.transfer.fetching,
     error: state.txn.error,
     transactions: state.txn.data
   }),

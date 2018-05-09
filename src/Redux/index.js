@@ -6,7 +6,8 @@ import sagas from '../Sagas/'
 const reducers = combineReducers({
   ui: require('./UIRedux').reducer,
   wallets: require('./WalletsRedux').reducer,
-  txn: require('./TransactionsRedux').reducer
+  txn: require('./TransactionsRedux').reducer,
+  transfer: require('./TransferRedux').reducer
 })
 
 const sagaMiddleware = createSagaMiddleware()

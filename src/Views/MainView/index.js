@@ -73,13 +73,16 @@ class MainView extends Component {
 }
 
 export default connect(
+
   state => ({
     fetching: state.wallets.fetching,
     data: state.wallets.data
   }),
+
   dispatch => ({
     fetch: _ => dispatch(WalletActions.walletsRequest())
   })
+
 )(MainView)
 
 const styles = StyleSheet.create({
