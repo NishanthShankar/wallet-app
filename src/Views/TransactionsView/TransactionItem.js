@@ -5,11 +5,15 @@ import {
   StyleSheet
 } from 'react-native'
 
+import {C} from '../../Utils/'
 export default ({party, amount, units}) => {
   const amountStyle = amount > 0 ? styles.gainText : styles.lossText
+  const backgroundColor = amount > 0 ? C.success : C.error
   return (
     <View style={styles.container}>
+      <View style={[styles.marker, {backgroundColor}]} />
       <Text style={styles.fromText}>{party}</Text>
+      <View style={{flex: 1}} />
       <Text style={amountStyle} >{amount} {units}</Text>
     </View>
   )
@@ -24,7 +28,12 @@ const styles = StyleSheet.create({
     borderBottomColor: '#ececec',
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between'
+  },
+  marker: {
+    height: 12,
+    width: 12,
+    borderRadius: 6,
+    marginRight: 8
   },
   fromText: {
     fontSize: 16,
@@ -32,10 +41,10 @@ const styles = StyleSheet.create({
   },
   gainText: {
     fontSize: 16,
-    color: 'green'
+    color: C.success
   },
   lossText: {
     fontSize: 16,
-    color: 'red'
+    color: C.error
   }
 })

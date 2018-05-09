@@ -27,6 +27,7 @@ import closeIcon from '../../Images/close.png'
 
 // Redux
 import TXNActions from '../../Redux/TransactionsRedux'
+import TransferActions from '../../Redux/TransferRedux'
 
 class TransactionsView extends Component {
   state = {
@@ -40,6 +41,7 @@ class TransactionsView extends Component {
   componentWillReceiveProps (nextProps) {
     if (this.props.transferring && !nextProps.transferring && !nextProps.error) {
       this.setState({success: true})
+      setTimeout(this.closeModal, 5000)
     }
   }
 
@@ -50,6 +52,10 @@ class TransactionsView extends Component {
 
   closeModal = () => {
     this.setState({showModal: false})
+    this.props.updateParty('')
+    setTimeout(() => {
+      this.setState({success: false})
+    }, 500)
   }
 
   open = () => {
@@ -185,7 +191,7 @@ class TransactionsView extends Component {
         show={this.state.showModal}
         onClose={this.closeModal} >
         {this.state.success
-          ? <ResultModal />
+          ? <ResultModal onClose={this.closeModal} />
           : <TransferModal type={this.type} />}
       </Modal >
     </View>
@@ -200,6 +206,7 @@ export default connect(
     transactions: state.txn.data
   }),
   dispatch => ({
+    updateParty: party => dispatch(TransferActions.updateParty(party)),
     fetch: id => dispatch(TXNActions.transactionsRequest(id)),
     transfer: params => dispatch(TXNActions.transactionsRequest(params))
   })

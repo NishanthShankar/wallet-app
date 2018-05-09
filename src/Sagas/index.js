@@ -11,7 +11,7 @@ import UIActions from '../Redux/UIRedux'
 // https://api.myjson.com/bins/fm5nm transactions
 // https://api.myjson.com/bins/auote send/receive
 
-const getParty = (state) => state.txn.party
+const getParty = (state) => state.transfer.party
 const getAPI = (url) =>
   fetch(url)
     .then(d => d.json())

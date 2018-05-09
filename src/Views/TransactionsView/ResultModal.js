@@ -8,19 +8,17 @@ import {
 } from 'react-native'
 
 import transfer from '../../Images/transfer_success.png'
+import {C} from '../../Utils/'
 
 /**
  * Component for showing TransactionRequests.
  * @param  {!Function} onClose
- * @param  {!String} type
  */
 
 const ResultModal = (props) => {
   return (
     <View style={styles.container}>
-      <View style={styles.imageContainer}>
-        <Image source={transfer} resizeMode='contain' style={styles.image} />
-      </View>
+      <Image source={transfer} resizeMode='contain' style={styles.image} />
       <Text style={styles.primaryText}>
         The transaction was successfull
       </Text>
@@ -29,10 +27,10 @@ const ResultModal = (props) => {
       </Text>
 
       <TouchableOpacity
-        onPress={props.close}
+        onPress={props.onClose}
         activeOpacity={0.8}
         style={styles.btn}>
-        <Text>CLOSE</Text>
+        <Text style={styles.btnText}>CLOSE</Text>
       </TouchableOpacity>
     </View>
   )
@@ -45,7 +43,6 @@ const styles = StyleSheet.create({
     flex: 1, alignItems: 'center', justifyContent: 'center'
   },
   imageContainer: {
-    height: 200,
     backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
@@ -73,9 +70,14 @@ const styles = StyleSheet.create({
     minWidth: 88,
     padding: 12,
     minHeight: 44,
-    backgroundColor: 'pink',
+    borderTopRightRadius: 4,
+    backgroundColor: C.primary,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  btnText: {
+    color: C.lightText,
+    fontSize: 16,
+    fontWeight: '500'
   }
-
 })

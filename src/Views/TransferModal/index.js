@@ -19,11 +19,11 @@ import TransferActions from '../../Redux/TransferRedux'
 const DETAILS_MAP = {
   send: {
     label: 'SEND',
-    placeholder: 'Enter id to send amount to'
+    placeholder: 'Enter ID to send amount to'
   },
   get: {
     label: 'REQUEST',
-    placeholder: 'Enter id to request amount'
+    placeholder: 'Enter ID to request amount'
   }
 }
 
