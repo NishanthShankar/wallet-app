@@ -2,7 +2,15 @@ import {StyleSheet} from 'react-native'
 
 export default StyleSheet.create({
   container: {
+    zIndex: 1,
     elevation: 3,
+    shadowColor: '#303030',
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowRadius: 4,
+    shadowOpacity: 0.24,
     backgroundColor: 'white'
   },
   flex: {
@@ -30,7 +38,14 @@ export default StyleSheet.create({
     width: 116,
     padding: 8,
     backgroundColor: 'white',
-    elevation: 2
+    elevation: 2,
+    shadowColor: '#303030',
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowRadius: 4,
+    shadowOpacity: 0.24
   },
   closeBtn: {
     position: 'absolute',
@@ -43,6 +58,10 @@ export default StyleSheet.create({
     height: 32,
     width: 32,
     marginBottom: 4
+  },
+  closeIcon: {
+    height: 24,
+    width: 24
   },
   txnsLabel: {
     margin: 8,

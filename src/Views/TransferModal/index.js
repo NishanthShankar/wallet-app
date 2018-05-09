@@ -4,6 +4,7 @@ import {
   Text,
   TextInput,
   Image,
+  StyleSheet,
   TouchableOpacity
 } from 'react-native'
 
@@ -34,23 +35,24 @@ const DETAILS_MAP = {
 
 const TransferModal = (props) => {
   return (
-    <View style={{flex: 1}}>
-      <View style={{height: 200, backgroundColor: 'white', alignItems: 'center', justifyContent: 'center', padding: 12, borderTopLeftRadius: 4, borderTopRightRadius: 4}}>
-        <Image source={transferImage} resizeMode='contain' style={{height: 124}} />
+    <View style={styles.flex}>
+      <View style={styles.imageContainer}>
+        <Image source={transferImage} resizeMode='contain' style={styles.image} />
       </View>
-      <View style={{flex: 1}} />
+      <View style={styles.flex} />
 
       <TextInput
-        style={{height: 44}}
+        style={styles.input}
+        underlineColorAndroid='transparent'
         onChangeText={props.update}
         onSubmitEditing={props.transfer(props.type)}
         placeholder={DETAILS_MAP[props.type].placeholder}
       />
-      <Text style={{textAlign: 'center', color: 'red', margin: 4}}>{props.error}</Text>
+      <Text style={styles.errorText}>{props.error}</Text>
       <TouchableOpacity
         onPress={props.transfer(props.type)}
         activeOpacity={0.8}
-        style={{margin: 8, height: 44, backgroundColor: 'pink', alignItems: 'center', justifyContent: 'center'}}>
+        style={styles.btn}>
         <Text>{DETAILS_MAP[props.type].label}</Text>
         <LoadingView loading={props.transferring} />
       </TouchableOpacity>
@@ -68,3 +70,40 @@ export default connect(
     transfer: type => () => dispatch(TransferActions.transferRequest({type}))
   })
 )(TransferModal)
+
+const styles = StyleSheet.create({
+  flex: {
+    flex: 1
+  },
+  imageContainer: {
+    height: 200,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 12,
+    borderTopLeftRadius: 4,
+    borderTopRightRadius: 4
+  },
+  image: {
+    height: 124
+  },
+  input: {
+    height: 44,
+    marginHorizontal: 12,
+    padding: 12,
+    borderWidth: 1,
+    borderColor: '#ececec'
+  },
+  errorText: {
+    textAlign: 'center',
+    color: 'red',
+    margin: 4
+  },
+  btn: {
+    margin: 8,
+    height: 44,
+    backgroundColor: 'pink',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+})

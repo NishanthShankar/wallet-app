@@ -3,30 +3,35 @@ import {
   View,
   Text,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  StyleSheet
 } from 'react-native'
 
 import transfer from '../../Images/transfer_success.png'
 
 /**
  * Component for showing TransactionRequests.
- * @param  {!Function} onSave
+ * @param  {!Function} onClose
  * @param  {!String} type
- * @param  {!Boolean} loading
  */
 
 const ResultModal = (props) => {
   return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <View style={{height: 200, backgroundColor: 'white', alignItems: 'center', justifyContent: 'center', padding: 12, borderTopLeftRadius: 4, borderTopRightRadius: 4}}>
-        <Image source={transfer} resizeMode='contain' style={{height: 124}} />
+    <View style={styles.container}>
+      <View style={styles.imageContainer}>
+        <Image source={transfer} resizeMode='contain' style={styles.image} />
       </View>
-      <Text style={{marginVertical: 24}}> SUCCESS </Text>
+      <Text style={styles.primaryText}>
+        The transaction was successfull
+      </Text>
+      <Text style={styles.secondaryText}>
+        This page with close in 5 seconds.
+      </Text>
 
       <TouchableOpacity
         onPress={props.close}
         activeOpacity={0.8}
-        style={{margin: 8, minWidth: 88, padding: 12, minHeight: 44, backgroundColor: 'pink', alignItems: 'center', justifyContent: 'center'}}>
+        style={styles.btn}>
         <Text>CLOSE</Text>
       </TouchableOpacity>
     </View>
@@ -34,3 +39,43 @@ const ResultModal = (props) => {
 }
 
 export default ResultModal
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1, alignItems: 'center', justifyContent: 'center'
+  },
+  imageContainer: {
+    height: 200,
+    backgroundColor: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 12,
+    borderTopLeftRadius: 4,
+    borderTopRightRadius: 4
+  },
+  image: {
+    height: 124
+  },
+  primaryText: {
+    marginTop: 24,
+    marginBottom: 4,
+    color: '#303030',
+    fontSize: 16
+  },
+  secondaryText: {
+    fontSize: 12,
+    textAlign: 'center',
+    color: '#30303060',
+    marginBottom: 24
+  },
+  btn: {
+    margin: 8,
+    minWidth: 88,
+    padding: 12,
+    minHeight: 44,
+    backgroundColor: 'pink',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+
+})

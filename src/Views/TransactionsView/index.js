@@ -5,6 +5,7 @@ import {
   Animated,
   ScrollView,
   Image,
+  Platform,
   LayoutAnimation,
   TouchableOpacity
 } from 'react-native'
@@ -122,7 +123,7 @@ class TransactionsView extends Component {
     if (!this.state.open) return null
     return (
       <Animated.View key='content' style={{opacity: this.state.opacity}} >
-        <ScrollView>
+        <ScrollView bounces={false}>
           <View style={styles.btnHolder}>
             <TouchableOpacity
               activeOpacity={0.9}
@@ -142,6 +143,7 @@ class TransactionsView extends Component {
             </TouchableOpacity>
           </View>
           {this.renderTransactions(this.props.transactions)}
+          <View style={{height: 240}} />
         </ScrollView>
         <LoadingView loading={this.props.fetching} />
       </Animated.View>
@@ -155,8 +157,14 @@ class TransactionsView extends Component {
       borderRadius
     } = this.getAnimtedProps()
 
+    const paddingTop = Platform.select({
+      ios: this.state.open ? 26 : null,
+      android: null
+    })
+
     return <View style={{maxHeight: G.height}}>
-      <Animated.View style={[styles.container, {height, margin, borderRadius}]}>
+      <Animated.View style={[styles.container,
+        {height, margin, borderRadius, paddingTop}]}>
         <TouchableOpacity
           activeOpacity={0.8}
           onPress={this.open}
@@ -166,7 +174,7 @@ class TransactionsView extends Component {
           {!this.state.open
             ? null
             : <TouchableOpacity onPress={this.close} style={styles.closeBtn}>
-              <Image source={closeIcon} style={{height: 24, width: 24}} />
+              <Image source={closeIcon} style={styles.closeIcon} />
             </TouchableOpacity>
           }
         </TouchableOpacity>

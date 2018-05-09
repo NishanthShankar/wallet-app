@@ -63,7 +63,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'pink',
-    elevation: 5
+    elevation: 5,
+    shadowColor: '#303030',
+    shadowOffset: {
+      width: 0,
+      height: 5
+    },
+    shadowRadius: 4,
+    shadowOpacity: 0.24
   },
   text: {
     color: 'white',

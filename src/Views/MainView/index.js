@@ -52,11 +52,11 @@ class MainView extends Component {
 
   render () {
     return (
-      <View style={{flex: 1, backgroundColor: '#ececec'}} >
+      <View style={styles.container} >
         {!this.state.scrollable
           ? <View key='header' style={styles.emptyHeader} />
           : <View key='header' style={styles.header}>
-            <Text style={{fontSize: 24}}>My Crypto Wallet</Text>
+            <Text style={styles.headerStyle}>My Crypto Wallet</Text>
           </View>}
         <FlatList
           ref='list'
@@ -86,15 +86,39 @@ export default connect(
 )(MainView)
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#ececec'
+  },
+  headerStyle: {
+    color: '#303030',
+    fontSize: 18
+  },
   emptyHeader: {
     height: 0,
     backgroundColor: 'white',
-    elevation: 2
+    zIndex: 2,
+    elevation: 2,
+    shadowColor: '#303030',
+    shadowOffset: {
+      width: 0,
+      height: 5
+    },
+    shadowRadius: 4,
+    shadowOpacity: 0.24
   },
   header: {
     height: HEADER_HEIGHT,
     backgroundColor: 'white',
     elevation: 2,
+    zIndex: 2,
+    shadowColor: '#303030',
+    shadowOffset: {
+      width: 0,
+      height: 5
+    },
+    shadowRadius: 4,
+    shadowOpacity: 0.24,
     justifyContent: 'center',
     alignItems: 'center'
   }
