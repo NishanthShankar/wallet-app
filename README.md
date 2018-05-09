@@ -1,7 +1,7 @@
 #  ECOMI Wallet
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat)](http://standardjs.com/)
 
-* Standard compliant React Native App Utilizing [Ignite](https://github.com/infinitered/ignite)
+* Standard compliant React Native App
 
 ## :arrow_up: How to Setup
 
@@ -26,8 +26,17 @@
   * for iOS
     * run `react-native run-ios`
   * for Android
-    * Run Genymotion
+    * Run Emulator
     * run `react-native run-android`
+
+## :arrow_forward: How to test App
+1. `yarn test`
+2. E2E testing
+  * for iOS
+    * run `detox build --configuration ios`
+    * run `detox test --configuration ios`
+  * for Android
+    * Work in progress
 
 ## :no_entry_sign: Standard Compliant
 
