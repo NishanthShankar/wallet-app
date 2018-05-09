@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders TransactionItem correctly 1`] = `
+<View
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "white",
+      "borderBottomColor": "#ececec",
+      "borderBottomWidth": 1,
+      "flexDirection": "row",
+      "height": 64,
+      "justifyContent": "space-between",
+      "paddingHorizontal": 12,
+    }
+  }
+>
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "#303030",
+        "fontSize": 16,
+      }
+    }
+  />
+  <Text
+    accessible={true}
+    allowFontScaling={true}
+    ellipsizeMode="tail"
+    style={
+      Object {
+        "color": "red",
+        "fontSize": 16,
+      }
+    }
+  >
+     
+  </Text>
+</View>
+`;

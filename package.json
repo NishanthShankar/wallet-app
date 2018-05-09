@@ -50,8 +50,8 @@
     "runner-config": "e2e/config.json",
     "configurations": {
       "ios": {
-        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/Dialogue.app",
-        "build": "xcodebuild -project ios/Dialogue.xcodeproj -scheme Dialogue -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
+        "binaryPath": "ios/build/Build/Products/Debug-iphonesimulator/ecomi.app",
+        "build": "xcodebuild -project ios/ecomi.xcodeproj -scheme ecomi -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build",
         "type": "ios.simulator",
         "name": "iPhone 6"
       },
@@ -59,7 +59,7 @@
         "binaryPath": "android/app/build/outputs/apk/app-debug.apk",
         "build": "pushd android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug && popd",
         "type": "android.emulator",
-        "name": "Nexus_5X_API_26"
+        "name": "Nexus_5_API_22"
       }
     }
   },

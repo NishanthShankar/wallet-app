@@ -166,6 +166,7 @@ class TransactionsView extends Component {
       <Animated.View style={[styles.container,
         {height, margin, borderRadius, paddingTop}]}>
         <TouchableOpacity
+          testID={`item_${this.props.units}`}
           activeOpacity={0.8}
           onPress={this.open}
           style={styles.flex}

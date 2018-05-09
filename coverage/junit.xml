@@ -1,0 +1,6 @@
+<testsuites name="jest tests" tests="1" failures="0" time="0.468">
+  <testsuite name="/src/Views/TransactionsView/txnItem.spec.js" errors="0" failures="0" skipped="0" timestamp="2018-05-09T06:53:38" time="0.468" tests="1">
+    <testcase classname="-renders TransactionItem correctly" name="-renders TransactionItem correctly" time="0.139">
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   card: {
-    minHeight: 360,
+    minHeight: 340,
     backgroundColor: 'white',
     borderRadius: 4
   }

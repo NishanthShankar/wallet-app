@@ -1,10 +1,11 @@
 import React from 'react'
 import {TouchableOpacity, ActivityIndicator, StyleSheet} from 'react-native'
+import {C} from '../Utils/index'
 
 const Loader = ({
   loading,
   size,
-  color = 'blue',
+  color = C.primary,
   backgroundColor = '#fff8',
   style,
   onCancel }) => {

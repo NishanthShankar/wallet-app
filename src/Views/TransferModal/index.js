@@ -11,6 +11,7 @@ import {
 import {connect} from 'react-redux'
 import transferImage from '../../Images/transfer_image.png'
 import LoadingView from '../../Components/LoadingView'
+import {C} from '../../Utils/'
 
 // Redux
 import TransferActions from '../../Redux/TransferRedux'
@@ -53,7 +54,7 @@ const TransferModal = (props) => {
         onPress={props.transfer(props.type)}
         activeOpacity={0.8}
         style={styles.btn}>
-        <Text>{DETAILS_MAP[props.type].label}</Text>
+        <Text style={styles.btnTxt}>{DETAILS_MAP[props.type].label}</Text>
         <LoadingView loading={props.transferring} />
       </TouchableOpacity>
     </View>
@@ -77,7 +78,7 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     height: 200,
-    backgroundColor: 'white',
+    backgroundColor: C.colorBg,
     alignItems: 'center',
     justifyContent: 'center',
     padding: 12,
@@ -102,8 +103,13 @@ const styles = StyleSheet.create({
   btn: {
     margin: 8,
     height: 44,
-    backgroundColor: 'pink',
+    backgroundColor: C.primary,
     alignItems: 'center',
     justifyContent: 'center'
+  },
+  btnTxt: {
+    color: C.lightText,
+    fontSize: 16,
+    fontWeight: '500'
   }
 })

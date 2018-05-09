@@ -1,0 +1,11 @@
+import 'react-native'
+import React from 'react'
+import TransactionItem from './TransactionItem'
+
+// Note: test renderer must be required after react-native.
+import renderer from 'react-test-renderer'
+
+it('renders TransactionItem correctly', () => {
+  const tree = renderer.create(<TransactionItem />).toJSON()
+  expect(tree).toMatchSnapshot()
+})

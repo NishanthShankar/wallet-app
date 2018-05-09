@@ -8,7 +8,8 @@ const dark = '#03031B'
 
 export default {
   background: gray,
+  colorBg: lavender,
   primary: blue,
   darkText: dark,
-  lightText: lavender
+  lightText: gray
 }

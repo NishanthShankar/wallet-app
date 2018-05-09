@@ -56,7 +56,9 @@ class MainView extends Component {
         {!this.state.scrollable
           ? <View key='header' style={styles.emptyHeader} />
           : <View key='header' style={styles.header}>
-            <Text style={styles.headerStyle}>My Crypto Wallet</Text>
+            <Text testID='walletHeader' style={styles.headerStyle}>
+              My Crypto Wallet
+            </Text>
           </View>}
         <FlatList
           ref='list'
